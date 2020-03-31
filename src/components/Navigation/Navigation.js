@@ -1,20 +1,33 @@
-import React from 'react';
+import React from "react";
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
-    if (isSignedIn) {
-      return (
-        <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <p onClick={() => onRouteChange('signout')} className='f3 link dim black underline pa3 pointer'>Sign Out</p>
-        </nav>
-      );
-    } else {
-      return (
-        <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <p onClick={() => onRouteChange('signin')} className='f3 link dim black underline pa3 pointer'>Sign In</p>
-          <p onClick={() => onRouteChange('register')} className='f3 link dim black underline pa3 pointer'>Register</p>
-        </nav>
-      );
-    }
-}
+import { Link } from "react-router-dom";
+
+// import firebase from "../firebase/firebase";
+
+const Navigation = ({ isSignedIn }) => {
+  // const logout = firebase.logout();
+  return (
+    <div>
+      {/* <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+        <p onClick={logout} className="f3 link dim black underline pa3 pointer">
+          Sign Out
+        </p>
+      </nav> */}
+
+      <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+        <p className="f3 link dim black underline pa3 pointer">
+          <Link style={{ color: "black" }} to="/signin">
+            Sign In
+          </Link>
+        </p>
+        <p className="f3 link dim black underline pa3 pointer">
+          <Link style={{ color: "black" }} to="/register">
+            Register
+          </Link>
+        </p>
+      </nav>
+    </div>
+  );
+};
 
 export default Navigation;
